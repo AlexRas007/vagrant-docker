@@ -25,8 +25,8 @@ if ARGV[0] == "docker" then
 	end
 
 	# vagrant docker - ретрансляция команд docker в виртуальную машину
-	if command == "clean" then
-		system("vagrant ssh -c \"docker " + ARGV.join(" ") + "\"")
+	if command != "--help" then
+		system("vagrant ssh -c \"" + ARGV.join(" ") + "\"")
 		exit
 	end
 
@@ -35,5 +35,6 @@ if ARGV[0] == "docker" then
 	puts "	container clean      удаление всех контейнеров"
 	puts "	image clean          удаление всех образов"
 	puts "	clean                удаление всех образов и контейнеров"
+	puts "	...                  любые другие команды докера"
 	exit
 end
